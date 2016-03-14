@@ -13,10 +13,15 @@ struct Tail {
 class Animal {
     let species: String
     let tail: Tail
+    init(species: String, tailLength: Double) {
+        self.species = species
+        self.tail = Tail(lengthInCm: tailLength)
+    }
 }
 //: __1b.__
 //: Instantiate and initialize a few different Animals.
-
+let monkey = Animal(species: "primate", tailLength: 15.0)
+let dog = Animal(species: "canine", tailLength: 2.0)
 //: __Problem 2__
 //:
 //: Below are the beginnings of the Peach class.
@@ -25,6 +30,7 @@ class Peach {
     
     // Softness is rated on a scale from 1 to 5, with 5 being the softest
     var softness: Int
+    var varieties: [Peach]?
     
     init(variety: String, softness: Int) {
         self.variety = variety
