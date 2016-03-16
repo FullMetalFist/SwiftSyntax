@@ -30,11 +30,22 @@ class Peach {
     
     // Softness is rated on a scale from 1 to 5, with 5 being the softest
     var softness: Int
-    var varieties: [Peach]?
+    //var varieties: [Peach]?
+    
+    let varieties = ["donut", "yellow", "white"]
     
     init(variety: String, softness: Int) {
         self.variety = variety
         self.softness = softness
+    }
+    
+    func ripen() {
+        self.softness++
+        if self.softness > 4 {
+            print("Eat")
+        } else {
+            print("Give me a little more time")
+        }
     }
 }
 //: __2a.__
@@ -45,6 +56,8 @@ class Peach {
 //:
 //: __2c.__
 //: Create an instance of the Peach class and call the method ripen().
+let sweetPeach = Peach(variety: "donut", softness: 4)
+sweetPeach.ripen()
 
 //: __Problem 3__
 //:
@@ -88,6 +101,11 @@ class ChattyDog {
         self.name = name
         self.breed = breed
         self.size = size
+    }
+    
+    func bark()-> String {
+        
+        return ""
     }
 }
 //: __4b.__
