@@ -69,6 +69,12 @@ class FluffyDog {
     let fluffiness: Int
     let droolFactor: Int
     
+    var cuddlability: Int {
+        get {
+            return self.fluffiness - self.droolFactor
+        }
+    }
+    
     init(name: String, fluffiness: Int, droolFactor: Int) {
         self.name = name
         self.fluffiness = fluffiness
@@ -81,7 +87,9 @@ class FluffyDog {
 }
 //: __3b.__
 //: Instantiate and initialize an instance of the class, FluffyDog. Use it to call the method, chase().
-
+var goodDog = FluffyDog(name: "Rover", fluffiness: 5, droolFactor: 1)
+goodDog.cuddlability
+goodDog.chase("car")
 //: __Problem 4__
 //:
 //: __4a.__
@@ -103,13 +111,32 @@ class ChattyDog {
         self.size = size
     }
     
-    func bark()-> String {
-        
-        return ""
+    func bark(size: Size)-> String {
+        switch size {
+        case .Small:
+            return "aip aip"
+        case .Medium:
+            return "arf arf"
+        case .Large:
+            return "woof woof"
+        }
+    }
+    
+    static func speak(size: Size)-> String {
+        switch size {
+        case .Small:
+            return "aip aip"
+        case .Medium:
+            return "arf arf"
+        case .Large:
+            return "woof woof"
+        }
     }
 }
 //: __4b.__
 //: Create an instance of ChattyDog and use it to call the method, bark().
+let barky = ChattyDog(name: "Barky", breed: "Mutt", size: .Large)
+barky.bark(.Large)
 
 //: __4c.__
 //: Rewrite the method, bark(), as a type method and rename it speak(). Call your type method to test it out.
