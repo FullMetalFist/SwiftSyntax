@@ -63,7 +63,7 @@ sweetPeach.ripen()
 //:
 //: __3a.__
 //:Add the computed property, "cuddlability", to the class, FluffyDog. Cuddlability should be computed based on the values of the stored properties, fluffiness and droolFactor.
-var theFluffiestDog = UIImage(named:"fluffyDog")!
+//var theFluffiestDog = UIImage(named:"fluffyDog")!
 class FluffyDog {
     let name: String
     let fluffiness: Int
@@ -140,7 +140,7 @@ barky.bark(.Large)
 
 //: __4c.__
 //: Rewrite the method, bark(), as a type method and rename it speak(). Call your type method to test it out.
-
+ChattyDog.speak(.Medium)
 //: __Problem 5__
 //:
 //:__5a.__
@@ -158,7 +158,24 @@ enum NaturalDisaster {
 class House {
     let numberOfBedrooms: Int
     let location: Quality
- 
+    
+    init (numberOfBedrooms: Int, location: Quality) {
+        self.numberOfBedrooms = numberOfBedrooms
+        self.location = location
+    }
+    
+    // 5c
+    var worthyOfAnOffer: Bool {
+        get {
+            switch (numberOfBedrooms, location) {
+            case (2, .Excellent), (3, .Good), (3, .Excellent):
+                return true
+            default:
+                return false
+            }
+        }
+    }
+    
     func willStayStanding(naturalDisaster:NaturalDisaster)-> Bool {
         switch naturalDisaster {
         case .Earthquake:
@@ -173,7 +190,9 @@ class House {
 
 //: __5b.__
 //: Create an instance of the House class and use it to call the method, willStayStanding().  This method takes in a parameter of type NaturalDisaster and return a Bool indicating whether the house will stay standing in a given natural disaster.
-
+let dreamHouse = House(numberOfBedrooms: 3, location: .Excellent)
+dreamHouse.willStayStanding(.Hurricane)
+dreamHouse.worthyOfAnOffer
 //: __5c.__
 //: Add a computed property called, "worthyOfAnOffer". This property should be a Bool, whose return value is dependent upon some combination of the stored properties, numberOfBedrooms and location.
 
