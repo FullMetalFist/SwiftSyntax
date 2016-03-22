@@ -31,10 +31,18 @@ class Teenager: Babysitter {
     }
     
     func playCandyland(numberOfTimes: Int) {
-        //
+        var count = 0
+        while count < numberOfTimes {
+            print("The candy castle!")
+            count++
+        }
     }
     
     func read(book: String, firstLine: String, asleep: Bool) -> Bool {
+        print("let's read \(book) again! \(firstLine)")
+        if asleep {
+            return asleep
+        }
         return !asleep
     }
 }
@@ -44,7 +52,9 @@ protocol Babysitter {
     func read(book: String, firstLine: String, var asleep: Bool) -> Bool
 }
 
-
+let neighborGirl = Teenager(age: 16, responsible: true, patience: .High)
+neighborGirl.playCandyland(3)
+neighborGirl.read("Yertle the Turtle", firstLine: "On the faraway island of Sala-ma-sond, Yertle the Turtle was king of the pond", asleep: false)
 //: __Problem 2__
 //:
 //:Below find the class Animal along with the Adorable protocol.
@@ -97,8 +107,14 @@ var pic = UIImage(named: "frolick.jpg")
 //: Based on what you see in the Friend class,  rewrite what you think would be in the Mover protocol.
 //:
 //: __3b.__ Edit the Friend class so that it adopts the Mover protocol.
+protocol Mover {
+    var willWorkForPizzaAndBeer: Bool { get }
+    func carryCouch() -> String
+    func loadVan(empty: Bool) -> Bool
+}
 
-class Friend {
+
+class Friend: Mover {
     var reliability: Int
     var likesYou: Bool
     
@@ -165,7 +181,7 @@ class Squirrel: Hoarder {
     
 }
 
-class ScrubJay {
+class ScrubJay: Hoarder {
     let wings = 2
     let female: Bool
     
@@ -175,6 +191,14 @@ class ScrubJay {
     
     func fly() -> String {
         return "Swoop!"
+    }
+    
+    func cache(foodItem: String) -> String {
+        return "Coming back for \(foodItem)"
+    }
+    
+    func pilfer() -> String {
+        return "Free stuff!"
     }
 }
 
@@ -222,6 +246,14 @@ class Minion {
     }
 }
 
+extension Minion: DirtyDeeds {
+    func cheat() {
+        print("Hua hua hua")
+    }
+    func steal() {
+        print("Hua hua hua")
+    }
+}
 //: __Problem 6__
 //:
 //: This extension from the [Coding Explorer Blog](http://www.codingexplorer.com/swift-extensions/) makes it easier to initialize a UIColor object from RGB values that are integers.
@@ -241,11 +273,10 @@ extension UIColor
         
         self.init(red: newRed, green: newGreen, blue: newBlue, alpha: CGFloat(1.0))
     }
+    
+    class func pistachio() -> UIColor {
+        return UIColor(redValue: 147, greenValue: 197, blueValue: 114)
+    }
 }
 
-
-
-
-
-
-
+UIColor.pistachio()
