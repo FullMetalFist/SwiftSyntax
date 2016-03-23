@@ -41,7 +41,7 @@ let divisibleByTwelve = numbers.filter({Int($0) % 12 == 0})
 //:
 //: Filtering out particles greater that 20 microns has been shown to reduce exposure to waterborne pathogens. Filter the following array for all of the particles below 20 microns in size. Assign the result to a new array.
 let particleSizesInMicrons = [150, 16, 82, 30, 10, 57]
-
+var underTwentyMicrons = particleSizesInMicrons.filter({$0 < 20 })
 //: __Problem 5__
 //:
 //: The Array method, map, takes a closure expression as an argument.  The closure is applied to each element in the Array, the results are mapped to a new Array, and that new Array is returned.
@@ -53,7 +53,10 @@ let sizesAsStrings = particleSizesInMicrons.map({ (size: Int) -> String in
 //: Ben just got back from India and he is tallying what he spent on gifts for his customs form.
 //: Use the map() method to transform this array of prices into dollars. Round to the nearest dollar.
 let pricesInRupees = [750, 825, 2000, 725]
-
+let pricesInDollars = pricesInRupees.map { (price:Int) -> String in
+    var dollars = price/64
+    return "$\(dollars)"
+}
 //: __Problem 6__
 //:
 //: Katie has a competition going with her old friends from the track team. Each person tries to match her fastest high school time for the 1600m run + 1 second for every year since graduation.
@@ -74,3 +77,10 @@ func timeStringFromInterval(timeInterval: Int) -> NSString {
 }
 
 var oldTimes = ["5:18", "5:45", "5:56", "5:25", "5:27"]
+
+var goalTimes = oldTimes.map(){(time: String) -> String in
+    var totalSeconds = timeIntervalFromString(time)
+    totalSeconds += 13
+    var goalTimeString = timeStringFromInterval(totalSeconds)
+    return goalTimeString as String
+}
