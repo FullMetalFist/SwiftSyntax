@@ -15,24 +15,25 @@ let orderedSurnames = surnames.sort({(name1: String, name2: String) -> Bool in
     return name2 > name1
 })
 
+let reversedNames = surnames.sort { $0 > $1 }
+
 // 2
 let battingAverages = [0.302, 0.556, 0.280, 0.500, 0.281, 0.285]
 let sortedAverages = battingAverages.sort({(average1: Double, average2: Double) -> Bool in
     return average2 > average1
 })
 
+let sorted = battingAverages.sort { $0 > $1 }
 //: __Problem 3__
 //:
 //: The following code snippet filters an array for all of the numbers which are divisible by 3.
 let numbers = [685, 1728, 648, 87, 979, 59175432]
-let divisibleByThree = numbers.filter({(number: Int) -> Bool in
-    number % 3 == 0
-})
+let divisibleByThree = numbers.filter({$0 % 3 == 0})
 
 //: __3a.__
 //:Filter the following array for the numbers which are divisible by 12.
 let numbersAsStrings = ["685", "1728", "648", "87", "979", "59175432"]
-
+let divisibleByTwelve = numbers.filter({Int($0) % 12 == 0})
 //: __3b.__
 //: Rewrite the filtering closure expression to be as concise as possible.
 
