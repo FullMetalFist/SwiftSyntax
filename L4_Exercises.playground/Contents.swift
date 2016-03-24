@@ -6,10 +6,21 @@ import UIKit
 //: ### Exercise 1
 //: For each title in the array print the following string: "title + with Puppets", e.g "Point Break with Puppets!"
 var movieTitleArray = ["Point Break", "The Dark Knight", "Star Wars", "When Harry Met Sally"]
+
+for title in movieTitleArray {
+    print("\(title) with Puppets!")
+}
 //: ### Exercise 2
 //: Rent is increasing by 20% this year. Use a for-in loop to apply this increase to each item in the oldMountainViewRent array.  Store the new values in the array newMountainViewRent.
 var oldMountainViewRent:[Double] = [2150, 1775, 2221, 1261, 1325, 2110, 1870]
 var newMountainViewRent = [Double]()
+
+for rent in oldMountainViewRent {
+    let hike = rent * 1.2
+    newMountainViewRent.append(hike)
+}
+
+print(newMountainViewRent)
 //: ### Exercise 3
 //: For each food with a true value, print out "<food>, yum!" For each food with a false value print out, "<food>, yuck!"
 var polarizingFoods = ["Anchovies":true, "Coconut":true, "Cilantro":true, "Liver": false]
