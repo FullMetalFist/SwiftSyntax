@@ -37,6 +37,19 @@ enum Sport {
 
 var sport = Sport.Baseball
 
+switch sport {
+case .Baseball:
+    print("Go A's!")
+case .Basketball:
+    print("Go Warriors!")
+case .Football:
+    print("Go Raiders!")
+case .Hockey:
+    print("Go Sharks!")
+case .Soccer:
+    print("Go Earthquakes!")
+}
+
 if sport == .Baseball {
     print("Go A's!")
 } else if sport == .Basketball {
