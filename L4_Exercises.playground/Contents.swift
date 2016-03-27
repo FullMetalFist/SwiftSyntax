@@ -87,6 +87,19 @@ if myMove == .Rock && yourMove == .Paper || myMove == .Paper && yourMove == .Roc
 var score = 97
 var letterGrade = ""
 
+switch score {
+case 90...100:
+    letterGrade = "A"
+case 80...89:
+    letterGrade = "B"
+case 70...79:
+    letterGrade = "C"
+case 60...69:
+    letterGrade = "D"
+default:
+    letterGrade = "Incomplete"
+}
+
 if 90...100 ~= score {
     letterGrade = "A"
 } else if 80...89 ~= score {
