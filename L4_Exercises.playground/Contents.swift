@@ -24,9 +24,22 @@ print(newMountainViewRent)
 //: ### Exercise 3
 //: For each food with a true value, print out "<food>, yum!" For each food with a false value print out, "<food>, yuck!"
 var polarizingFoods = ["Anchovies":true, "Coconut":true, "Cilantro":true, "Liver": false]
+
+for (food, preference) in polarizingFoods {
+    if preference {
+        print("\(food), yum!")
+    }
+    else {
+        print("\(food), yuck")
+    }
+}
 //: ### Exercise 4
 //: The Oakland area code is changing from 415 to 510. Replace all occurrences of the area code 415 with 510 in the dictionary below.
 var rapperPhoneNumbers = ["Azealia Banks":"(212)548-8777", "Boots Riley":"(415)755-9887", "MC Hammer":"(415)533-9899", "Missy Elliot":"(757)488-5552", "Shock G":"(415)499-7676", "Sir Mix-a-lot":"(206)123-4567", "Snoop Dogg":"(213)760-6664"]
+
+for (name, digits) in rapperPhoneNumbers {
+    rapperPhoneNumbers[name] = digits.stringByReplacingOccurrencesOfString("(415)", withString: "(510)")
+}
 //: ## Switch Statements
 //: Translate the following if-else statements into switch statements. Feel free to modify print statements as desired.
 //: ### Exercise 5
@@ -71,6 +84,17 @@ var myMove = roshamboMove.Scissors
 var yourMove = roshamboMove.Scissors
 
 var resultsMessage = ""
+
+switch (myMove, yourMove) {
+case (.Rock, .Paper), (.Paper, .Rock):
+    resultsMessage = "Paper covers Rock"
+case (.Rock, .Rock), (.Paper, .Paper), (.Scissors, .Scissors):
+    resultsMessage = "It's a tie!"
+case (.Rock, .Scissors), (.Scissors, .Rock):
+    resultsMessage = "Rock crushes Scissors."
+case (.Paper, .Scissors), (.Scissors, .Paper):
+    resultsMessage = "Scissors cuts Paper"
+}
 
 if myMove == .Rock && yourMove == .Paper || myMove == .Paper && yourMove == .Rock {
     resultsMessage = "Paper covers Rock."
@@ -121,6 +145,15 @@ var vowels: [Character] = ["a", "e", "i", "o", "u"]
 if vowels.contains(firstLetter) {
     newWord = word + "yay"
 } else {
+    word.removeAtIndex(word.startIndex)
+    newWord = "\(word)\(firstLetter)ay"
+}
+
+
+switch firstLetter {
+case "a", "e", "i", "o", "u":
+    newWord = word + "yay"
+default:
     word.removeAtIndex(word.startIndex)
     newWord = "\(word)\(firstLetter)ay"
 }
